@@ -1,4 +1,4 @@
-app = "pokemon-ai-gen-5a11"
+app = "pokemon-gen-ai"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = [ ]
