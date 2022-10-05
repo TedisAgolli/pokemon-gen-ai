@@ -1,4 +1,4 @@
-# Remix Supa Fly Stack
+# Pokemon Gen AI
 
 > This Readme will be re-written soon
 
