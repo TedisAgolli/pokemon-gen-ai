@@ -8,7 +8,7 @@ export async function getNote({
   userId: User["id"];
 }) {
   return db.pokemon.findFirst({
-    select: { id: true, body: true, title: true },
+    select: { id: true, name: true },
     where: { id, userId },
   });
 }
