@@ -1,12 +1,11 @@
+import type { Pokemon } from "@prisma/client";
 import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
-import { getSupabase } from "~/integrations/supabase";
-import { PlusIcon, LockClosedIcon } from "@heroicons/react/20/solid";
+import { useLoaderData } from "@remix-run/react";
 
+import { getSupabase } from "~/integrations/supabase";
 import { getAuthSession } from "~/modules/auth/session.server";
 import { getPokemons } from "~/modules/note/queries";
-import type { Pokemon } from "@prisma/client";
 
 export const handle = { i18n: ["common", "auth"] };
 
@@ -21,25 +20,20 @@ export async function loader({ request }: LoaderArgs) {
       .from("pokemon")
       .getPublicUrl(imageUrl);
     const publicURL = imgData?.publicURL;
-    console.log("pub", publicURL);
     if (!publicURL) {
       return null;
     }
 
     return { name, imageUrl: publicURL };
   });
-  console.log(dataWithImage);
   return json({ items: dataWithImage, email });
 }
 
 export default function Index() {
-  const { email, items } = useLoaderData<LoaderData>();
+  const { items } = useLoaderData<LoaderData>();
   return (
     <>
-      <ul
-        role="list"
-        className="mx-10 mt-24 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 "
-      >
+      <ul className="mx-10 mt-24 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 ">
         {items.map(({ name, imageUrl }) => (
           <li
             key={name}

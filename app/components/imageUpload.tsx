@@ -1,6 +1,7 @@
-import { useRef, useState, ClipboardEvent } from "react";
+import type { ClipboardEvent } from "react";
+import { useRef, useState } from "react";
 
-export default function ImageUpload() {
+export function ImageUpload() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const hiddenFileInput = useRef<HTMLInputElement>(null);
   const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
@@ -29,7 +30,6 @@ export default function ImageUpload() {
         className="hidden"
         onChange={(event) => {
           if (event.target.files) {
-            console.log(event.target.files[0]);
             setSelectedImage(event.target.files[0]);
           }
         }}

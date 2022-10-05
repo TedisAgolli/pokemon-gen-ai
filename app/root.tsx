@@ -1,3 +1,4 @@
+import { PlusIcon, LockClosedIcon } from "@heroicons/react/20/solid";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -16,10 +17,9 @@ import {
 } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { useChangeLanguage } from "remix-i18next";
-import { PlusIcon, LockClosedIcon } from "@heroicons/react/20/solid";
-import { getAuthSession } from "~/modules/auth/session.server";
 
 import i18next from "~/i18next.server";
+import { getAuthSession } from "~/modules/auth/session.server";
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getBrowserEnv } from "./utils/env";

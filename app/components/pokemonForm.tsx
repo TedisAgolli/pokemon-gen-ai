@@ -1,7 +1,8 @@
 import { Form, useTransition } from "@remix-run/react";
-import ImageUpload from "./imageUpload";
 
-export default function PokemonForm() {
+import { ImageUpload } from "./imageUpload";
+
+export function PokemonForm() {
   const transition = useTransition();
   return (
     <div className="flex justify-center">

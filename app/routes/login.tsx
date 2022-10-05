@@ -2,15 +2,8 @@ import * as React from "react";
 
 import type { ActionArgs, LoaderArgs, MetaFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import {
-  Form,
-  Link,
-  useActionData,
-  useSearchParams,
-  useTransition,
-} from "@remix-run/react";
-import { useTranslation } from "react-i18next";
-import { getFormData, useFormInputProps } from "remix-params-helper";
+import { useActionData } from "@remix-run/react";
+import { getFormData } from "remix-params-helper";
 import { z } from "zod";
 
 import i18next from "~/i18next.server";
@@ -83,17 +76,9 @@ export const meta: MetaFunction = ({ data }) => ({
 export const handle = { i18n: "auth" };
 
 export default function LoginPage() {
-  const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") ?? undefined;
   const actionData = useActionData<typeof action>();
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
-  const inputProps = useFormInputProps(LoginFormSchema);
-  const transition = useTransition();
-  const { t } = useTranslation("auth");
-  const disabled =
-    transition.state === "submitting" || transition.state === "loading";
-
   React.useEffect(() => {
     if (actionData?.errors?.email) {
       emailRef.current?.focus();

@@ -1,5 +1,5 @@
+import type { ActionFunction } from "@remix-run/node";
 import {
-  ActionFunction,
   unstable_composeUploadHandlers,
   unstable_createMemoryUploadHandler,
   unstable_parseMultipartFormData,
@@ -7,14 +7,13 @@ import {
 } from "@remix-run/node";
 
 // Import the Prisma client
-import PokemonForm from "~/components/pokemonForm";
+import { PokemonForm } from "~/components/pokemonForm";
 import { getSupabase } from "~/integrations/supabase";
 import { requireAuthSession } from "~/modules/auth/guards";
-import { getAuthSession } from "~/modules/auth/session.server";
 import { createPokemon } from "~/modules/note/mutations";
 
-const asyncIterableToStream = (asyncIterable: AsyncIterable<Uint8Array>) => {
-  return new ReadableStream({
+const asyncIterableToStream = (asyncIterable: AsyncIterable<Uint8Array>) =>
+  new ReadableStream({
     async pull(controller) {
       for await (const entry of asyncIterable) {
         controller.enqueue(entry);
@@ -22,7 +21,6 @@ const asyncIterableToStream = (asyncIterable: AsyncIterable<Uint8Array>) => {
       controller.close();
     },
   });
-};
 
 export const action: ActionFunction = async ({ request }) => {
   const authSession = await requireAuthSession(request);
@@ -35,7 +33,7 @@ export const action: ActionFunction = async ({ request }) => {
     const stream = asyncIterableToStream(file.data);
 
     const filepath = `${Math.random()}-${file.filename}`;
-    const { data, error } = await supabaseClient.storage
+    const { error } = await supabaseClient.storage
       .from("pokemon")
       .upload(filepath, stream, {
         contentType: file.contentType,
@@ -56,7 +54,6 @@ export const action: ActionFunction = async ({ request }) => {
 
   const name = formData.get("name");
   const filePath = formData.get("image");
-  console.log("data submitted", name, filePath, authSession.userId);
 
   await createPokemon({
     name: name as string,
