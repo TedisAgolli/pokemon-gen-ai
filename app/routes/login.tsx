@@ -99,7 +99,7 @@ export default function LoginPage() {
             Replicate
           </a>
           . They provide a generous free tier, but if a lot of people use this
-          website it might end up consting money. Asking you to log in helps
+          website it might end up costing money. Asking you to log in helps
           minimize spam.
         </p>
         <p className="mb-2 text-sm font-normal text-gray-300">
