@@ -1,4 +1,4 @@
-import { PlusIcon, LockClosedIcon } from "@heroicons/react/20/solid";
+import { PlusIcon } from "@heroicons/react/20/solid";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -72,44 +72,39 @@ export default function App() {
       <body className="bg-blueGray-800">
         <div className="mt-8 mr-5 grid grid-cols-3 justify-items-stretch ">
           <div></div>
-          <Link
-            className="justify-self-center"
-            to={"/"}
-          >
-            <h1 className="text-5xl font-extrabold text-white">
-              <span className="text-amber-400">Pokemon: </span>
-              <span className="italic">Gen AI</span>
-            </h1>
-          </Link>
+          <div className="flex flex-col items-center">
+            <Link
+              className="justify-self-center"
+              to={"/"}
+            >
+              <h1 className="text-5xl font-extrabold text-white">
+                <span className="text-amber-400">Pokemon: </span>
+                <span className="italic">Gen AI</span>
+              </h1>
+            </Link>
+            <Link
+              to={"/about"}
+              className="text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
+            >
+              <span className="font-light text-white">What is this?</span>
+            </Link>
+          </div>
 
           <div className="flex flex-col justify-self-end">
-            {email ? (
-              <>
-                <Link
-                  to={"/create"}
-                  className="relative inline-flex w-max items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <PlusIcon
-                    className="-ml-1 mr-2 h-5 w-5"
-                    aria-hidden="true"
-                  />
-                  <span>Create</span>
-                </Link>
-                <span className="text-gray-400">
-                  Logged in as <span className="italic">{email}</span>
-                </span>
-              </>
-            ) : (
-              <Link
-                to={"/login"}
-                className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
-                <LockClosedIcon
-                  className="-ml-1 mr-2 h-5 w-5"
-                  aria-hidden="true"
-                />
-                <span>Login to Create</span>
-              </Link>
+            <Link
+              to={"/create"}
+              className="relative inline-flex w-max items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+            >
+              <PlusIcon
+                className="-ml-1 mr-2 h-5 w-5"
+                aria-hidden="true"
+              />
+              <span>Create</span>
+            </Link>
+            {email && (
+              <span className="text-gray-400">
+                Logged in as <span className="italic">{email}</span>
+              </span>
             )}
           </div>
         </div>

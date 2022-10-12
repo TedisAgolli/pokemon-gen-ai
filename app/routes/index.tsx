@@ -45,7 +45,7 @@ export default function Index() {
                 src={imageUrl}
                 alt=""
               />
-              <h3 className="mt-6 text-xl font-bold text-white">{name}</h3>
+              {/* <h3 className="mt-6 text-xl font-bold text-white">{name}</h3> */}
             </div>
           </li>
         ))}

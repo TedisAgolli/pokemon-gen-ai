@@ -51,7 +51,7 @@ export async function action({ request }: ActionArgs) {
     );
   }
 
-  const { email, password, redirectTo = "/notes" } = formValidation.data;
+  const { email, password, redirectTo = "/create" } = formValidation.data;
 
   const authSession = await signInWithEmail(email, password);
 
@@ -88,8 +88,34 @@ export default function LoginPage() {
   }, [actionData]);
 
   return (
-    <div className="mx-auto mt-10 w-full max-w-md px-8">
-      <ContinueWithEmailForm />
+    <div className="flex flex-col items-center">
+      <div className="mx-auto mt-10 max-w-xl px-8">
+        <p className="mb-5 font-semibold text-gray-200">
+          This website uses a model hosted by{" "}
+          <a
+            className="text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
+            href="https://replicate.com/"
+          >
+            Replicate
+          </a>
+          . They provide a generous free tier, but if a lot of people use this
+          website it might end up consting money. Asking you to log in helps
+          minimize spam.
+        </p>
+        <p className="mb-2 text-sm font-normal text-gray-300">
+          If you want to play with the image generator, go to{" "}
+          <a
+            className="text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
+            href="https://replicate.com/lambdal/text-to-pokemon"
+          >
+            replicate/text-to-pokemon
+          </a>{" "}
+          and use their generous free tier.
+        </p>
+      </div>
+      <div className="mt-8 w-64 lg:w-96">
+        <ContinueWithEmailForm />
+      </div>
     </div>
   );
 }

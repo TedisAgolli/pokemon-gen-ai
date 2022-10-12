@@ -29,6 +29,12 @@ export function ContinueWithEmailForm() {
       replace={false}
       ref={ref}
     >
+      <label
+        className="text-white"
+        htmlFor="email"
+      >
+        Email
+      </label>
       <input
         type="email"
         name="email"
