@@ -74,47 +74,47 @@ export default function IndexRoute() {
               className="mt-2 block w-full flex-1 rounded-md border-gray-300 p-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
 
-            {pokemonImageFetcher.submission ? (
-              <button
-                type="submit"
-                disabled={true}
-                className="mt-3 inline-flex cursor-not-allowed justify-center rounded-md border border-transparent bg-amber-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
-              >
-                <svg
-                  className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
+            <div className="flex flex-col items-center">
+              {pokemonImageFetcher.submission ? (
+                <button
+                  type="submit"
+                  disabled={true}
+                  className="mt-3 inline-flex cursor-not-allowed justify-center rounded-md border border-transparent bg-amber-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Generating...
-              </button>
-            ) : (
-              <div className="flex flex-col items-center">
+                  <svg
+                    className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Generating...
+                </button>
+              ) : (
                 <button
                   type="submit"
                   className="mt-3 inline-flex w-fit justify-center rounded-md border border-transparent bg-amber-500 py-2 px-4 text-sm font-semibold text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
                 >
                   Generate image
                 </button>
-              </div>
-            )}
-            <span className="mt-5 font-light text-gray-300">
-              Usually takes 10-20 seconds, generates 2 images
-            </span>
+              )}
+              <span className="mt-5 font-light text-gray-300">
+                Usually takes 10-20 seconds, generates 2 images
+              </span>
+            </div>
           </div>
         </pokemonImageFetcher.Form>
       </div>

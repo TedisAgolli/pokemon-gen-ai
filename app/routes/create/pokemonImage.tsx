@@ -1,6 +1,7 @@
 import { json } from "@remix-run/node";
 
-const TOKEN = "3cd83f4c271ae2ca232ba8bc66d7d32adbd14782";
+import { REPLICATE_TOKEN } from "~/utils/env";
+
 export async function action({ request }: { request: Request }) {
   const description = (await request.formData()).get("description");
   const res = await fetch("https://api.replicate.com/v1/predictions", {
@@ -11,7 +12,7 @@ export async function action({ request }: { request: Request }) {
       input: { prompt: description, num_outputs: 2 },
     }),
     headers: {
-      Authorization: `Token ${TOKEN}`,
+      Authorization: `Token ${REPLICATE_TOKEN}`,
       "Content-Type": "application/json",
     },
   })
@@ -23,7 +24,7 @@ export async function action({ request }: { request: Request }) {
         //wait 50ms
         await new Promise((resolve) => setTimeout(resolve, 50));
         prediction = await fetch(get, {
-          headers: { Authorization: `Token ${TOKEN}` },
+          headers: { Authorization: `Token ${REPLICATE_TOKEN}` },
         }).then((res) => res.json());
       }
 

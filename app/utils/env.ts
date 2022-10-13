@@ -17,6 +17,7 @@ declare global {
       SERVER_URL: string;
       SUPABASE_ANON_PUBLIC: string;
       SESSION_SECRET: string;
+      REPLICATE_TOKEN: string;
     }
   }
 }
@@ -59,6 +60,10 @@ export const NODE_ENV = getEnv("NODE_ENV", {
 export const SUPABASE_URL = getEnv("SUPABASE_URL", { isSecret: false });
 export const SUPABASE_ANON_PUBLIC = getEnv("SUPABASE_ANON_PUBLIC", {
   isSecret: false,
+});
+
+export const REPLICATE_TOKEN = getEnv("REPLICATE_TOKEN", {
+  isSecret: true,
 });
 
 export function getBrowserEnv() {
