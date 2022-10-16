@@ -21,7 +21,6 @@ import { useChangeLanguage } from "remix-i18next";
 import i18next from "~/i18next.server";
 import { getAuthSession } from "~/modules/auth/session.server";
 
-import { MadeBy } from "./components/MadeBy";
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getBrowserEnv } from "./utils/env";
 
@@ -109,7 +108,6 @@ export default function App() {
             )}
           </div>
         </div>
-        <MadeBy />
         <Outlet />
 
         <ScrollRestoration />

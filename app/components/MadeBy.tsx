@@ -1,6 +1,6 @@
 export function MadeBy() {
   return (
-    <div className="absolute bottom-3 right-3 text-white">
+    <div className="fixed bottom-3 right-3 text-white">
       <span className="font-bold">Pokemon Gen AI</span> <span>made by </span>
       <a
         className="text-white underline"

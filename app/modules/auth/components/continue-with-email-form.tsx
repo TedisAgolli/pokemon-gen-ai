@@ -16,7 +16,6 @@ export function ContinueWithEmailForm() {
     ? t("register.sendingLink")
     : t("register.continueWithEmail");
 
-  console.log(data?.error);
   React.useEffect(() => {
     if (isSuccessFull) {
       ref.current?.reset();
@@ -48,7 +47,7 @@ export function ContinueWithEmailForm() {
           isSuccessFull ? "text-green-600" : ""
         }`}
       >
-        {/* {!isSuccessFull ? data?.error : t("register.checkEmail")} */}
+        {!isSuccessFull ? data?.error : t("register.checkEmail")}
       </div>
       <button
         type="submit"

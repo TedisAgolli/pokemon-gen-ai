@@ -139,7 +139,7 @@ export default function IndexRoute() {
         ))}
       </div>
       {pokemonSources.length && (
-        <div className="flex justify-center">
+        <div className="flex justify-center pb-5">
           <Form
             method="post"
             className="space-y-8 divide-y divide-gray-200 "
