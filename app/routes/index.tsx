@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import type { Pokemon } from "@prisma/client";
 import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
@@ -31,8 +33,24 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function Index() {
   const { items } = useLoaderData<LoaderData>();
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
   return (
     <>
+      <div
+        id="modal"
+        className={`z-80 fixed top-0 left-0 ${
+          selectedImage ? "flex" : "hidden"
+        } h-screen w-screen items-center justify-center bg-black/70`}
+        onClick={() => setSelectedImage(undefined)}
+      >
+        <img
+          className="max-h-[600px] max-w-[800px] object-cover"
+          alt="Selected pokemon"
+          src={selectedImage}
+        />
+      </div>
       <ul className="mx-10 mt-24 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 ">
         {items.map(({ name, imageUrl }) => (
           <li
@@ -44,6 +62,7 @@ export default function Index() {
                 className="mx-auto flex-shrink-0"
                 src={imageUrl}
                 alt=""
+                onClick={() => setSelectedImage(imageUrl)}
               />
               {/* <h3 className="mt-6 text-xl font-bold text-white">{name}</h3> */}
             </div>

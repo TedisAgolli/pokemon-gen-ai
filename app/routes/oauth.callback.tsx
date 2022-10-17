@@ -21,7 +21,7 @@ import { assertIsPost, safeRedirect } from "~/utils/http.server";
 export async function loader({ request }: LoaderArgs) {
   const authSession = await getAuthSession(request);
 
-  if (authSession) return redirect("/notes");
+  if (authSession) return redirect("/create");
 
   return json({});
 }

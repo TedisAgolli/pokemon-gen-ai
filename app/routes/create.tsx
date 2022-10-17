@@ -73,7 +73,6 @@ export default function IndexRoute() {
               id="description"
               className="mt-2 block w-full flex-1 rounded-md border-gray-300 p-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
-
             <div className="flex flex-col items-center">
               {pokemonImageFetcher.submission ? (
                 <button
@@ -138,7 +137,7 @@ export default function IndexRoute() {
           </button>
         ))}
       </div>
-      {pokemonSources.length && (
+      {pokemonSources.length > 0 && (
         <div className="flex justify-center pb-5">
           <Form
             method="post"
@@ -146,7 +145,7 @@ export default function IndexRoute() {
           >
             <input
               required={true}
-              value={pokemonSources[0]}
+              value={selectedImage}
               type="text"
               name="imgSrc"
               id="imgSrc"
