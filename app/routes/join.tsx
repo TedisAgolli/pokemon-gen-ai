@@ -61,7 +61,7 @@ export async function action({ request }: ActionArgs) {
     );
   }
 
-  const { email, password, redirectTo = "/notes" } = formValidation.data;
+  const { email, password, redirectTo = "/create" } = formValidation.data;
 
   const existingUser = await getUserByEmail(email);
 
