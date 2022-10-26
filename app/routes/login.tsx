@@ -90,17 +90,12 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col items-center">
       <div className="mx-auto mt-10 max-w-xl px-8">
+        <p className="text-center font-bold text-gray-200">
+          Why do you require an email?
+        </p>
         <p className="mb-5 font-semibold text-gray-200">
-          This website uses a model hosted by{" "}
-          <a
-            className="text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
-            href="https://replicate.com/"
-          >
-            Replicate
-          </a>
-          . They provide a generous free tier, but if a lot of people use this
-          website it might end up costing money. Asking you to log in helps
-          minimize spam.
+          Running the model costs money. I am currently using the free tier, but
+          that might run out soon. Asking you to log in helps minimize spam.
         </p>
         <p className="mb-2 text-sm font-normal text-gray-300">
           If you want to play with the image generator, go to{" "}
